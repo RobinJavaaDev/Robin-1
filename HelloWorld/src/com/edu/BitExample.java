@@ -31,7 +31,7 @@ public class BitExample {
 		    cnt--;
 		    System.out.println(cnt);
 		    
-		   int
+		  
 		    
 }
 }
