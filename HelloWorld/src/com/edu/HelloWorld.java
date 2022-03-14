@@ -2,8 +2,9 @@ package com.edu;
 
 public class HelloWorld {
 	public static void main(String[] args) {
-//		Ã¹¹øÂ° ÇÁ·Î±×·¥ÀÔ´Ï´Ù.
-		System.out.println("¾È³çÇÏ¼¼¿ä!");
-		System.out.println("Àú´Â ÀÌÀçºóÀÔ´Ï´Ù");
+//		Ã¹ï¿½ï¿½Â° ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½Ô´Ï´ï¿½.
+		System.out.println("ï¿½È³ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½!");
+		System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½");
 	}
 }
+ã…‡ã…‡ã…‡ã…‡??
