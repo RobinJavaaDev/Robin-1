@@ -15,7 +15,7 @@ public class MathExample {
 		System.out.println("두 수의 차는 " + (num1 - num2) + " 입니다.");
 		System.out.println("두 수의 곱은 " + (num1 * num2) + " 입니다.");
 		System.out.println("두 수의 몫은 " + (int)(num1 / num2) + " 입니다.");
-		System.out.println("두 수를 나머지는 " + (num1 % num2) + " 입니다.");
+		System.out.println("두 수의 나머지는 " + (num1 % num2) + " 입니다.");
 		
 		scn.close();
 	}
