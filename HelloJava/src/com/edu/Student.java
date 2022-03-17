@@ -81,7 +81,7 @@ public class Student {
       this.engScore = engScore;
    }
    
-   public String getStudInfo() {
+   public String getStudentInfo() {
       String str = "===============================";
       str += "\n 학생이름: " + this.getStudName() + "입니다.";
       str += "\n 학번: " + this.getStudNo() + "입니다.";

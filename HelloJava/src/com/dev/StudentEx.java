@@ -16,10 +16,10 @@ public class StudentEx {
 			int menu = scn.nextInt();
 			if (menu == 1) {
 				// 입력기능구현 : 학번,이름,영어점수,수학점수,국어점수 => student instance 만들어서 => 배열에 담기
+				System.out.print("이름을 입력하세요>");
+				String sname = scn.next();				
 				System.out.print("학번을 입력하세요>");
 				int sno = scn.nextInt();
-				System.out.print("이름을 입력하세요>");
-				String sname = scn.next();
 				System.out.print("영어점수를 입력하세요>");
 				int escore = scn.nextInt();
 				System.out.print("국어점수를 입력하세요>");
@@ -27,7 +27,7 @@ public class StudentEx {
 				System.out.print("수학점수를 입력하세요>");
 				int mscore = scn.nextInt();
 
-				Student s1 = new Student(sno, sname, kscore, mscore, escore);
+				Student s1 = new Student(sname, sno, kscore, mscore, escore);
 				for (int i = 0; i < students.length; i++) {
 					if (students[i] == null) {
 						students[i] = s1;
