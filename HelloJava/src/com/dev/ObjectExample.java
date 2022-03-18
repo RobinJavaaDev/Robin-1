@@ -30,7 +30,7 @@ public class ObjectExample {
 
 			for (int i = 0; i < students.length; i++) {
 				if (students[i].getStudName().equals(searchName))
-					System.out.println(students[i].getStudentInfo());
+					System.out.println(students[i].getStudInfo());
 			}
 
 		}

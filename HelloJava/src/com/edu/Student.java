@@ -2,9 +2,9 @@ package com.edu;
 
 public class Student {
    //학생번호, 학생이름, 국어점수, 수학점수, 영어점수 <=필드로 정의
-    
-   private String studName;
-   private int studNo;
+	
+	private int studNo; 
+    private String studName;
     private int korScore = -1;
     private int mathScore = -1;
     private int engScore = -1;
@@ -20,9 +20,10 @@ public class Student {
     public Student(int studNo) {
        this.studNo = studNo;
     }
-    public Student(String studName, int studNo, int korScore, int mathScore, int engScore) {
-      this.studName = studName;
+    public Student( int studNo, String studName,int korScore, int mathScore, int engScore) {
+     
       this.studNo = studNo;
+      this.studName = studName;
       this.korScore = korScore;
       this.mathScore = mathScore;
       this.engScore = engScore;

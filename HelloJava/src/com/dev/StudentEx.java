@@ -39,7 +39,7 @@ public class StudentEx {
 				// 리스트
 				for (int i = 0; i < students.length; i++) {
 					if (students[i] != null) {
-						System.out.println(students[i].getStudentInfo());
+						System.out.println(students[i].getStudInfo());
 					}
 
 				}

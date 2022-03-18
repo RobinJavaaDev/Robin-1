@@ -7,13 +7,30 @@ public class Account {
 	private String accName;
 	private int money;
 
+	public static String bankName;
+	static {
+		bankName = "한일은행";
+	}
 	// constructor, 생성자: 목적은 필드의 초기값을 지정함
+	public static void showBankname() {
+		System.out.println("한일은행입니다");
+	}
+	
+	
 
 	public Account(String accNo, String accName, int money) {
 		super();
 		this.accNo = accNo;
 		this.accName = accName;
 		this.money = money;
+	}
+
+
+
+	public Account(String accNo, String accName) {
+		super();
+		this.accNo = accNo;
+		this.accName = accName;
 	}
 
 
