@@ -186,7 +186,7 @@ public class BankApp {
 //				System.out.println("한도액 초과입니다.");
 				break;
 		}
-		banks[i].setMoney(checkAccount - amt);
+//		banks[i].setMoney(checkAccount - amt);
 			banks[i].setMoney(currAmt + amt );
 			
 	}
