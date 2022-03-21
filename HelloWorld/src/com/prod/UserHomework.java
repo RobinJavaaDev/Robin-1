@@ -28,6 +28,9 @@ public static void main(String[] args) {
 	
 	System.out.println(user1.getUserInfo());
 	System.out.println(user4.getUserInfo());
+	System.out.println(user2.getUserInfo());
+	System.out.println(user3.getUserInfo());
+	
 	
 	User [] userInq = { user1, user2, user3, user4 };
 	for (int i=0; i<userInq.length; i++) {
