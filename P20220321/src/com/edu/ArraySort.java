@@ -28,7 +28,7 @@ public class ArraySort {
 		for (int cnt = 0; cnt < loopCnt; cnt++) {
 
 			int temp = intAry[0]; // 첫번째 값을 temp로 지정
-			for (int cnt = 0; cnt < loopCnt; cnt++)
+			for (int cnt1 = 0; cnt1 < loopCnt; cnt1++)
 				for (int i = 0; i < loopCnt; i++) {
 					if (intAry[i] > intAry[i + 1]) {
 						// 34 25 => 25 34 로 변경
