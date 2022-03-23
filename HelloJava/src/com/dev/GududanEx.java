@@ -1,7 +1,5 @@
 package com.dev;
 
-
-
 public class GududanEx {
 	public static void main(String[] args) {
 		int result = sum(sum(10, 20), sum(5, 7));
@@ -56,7 +54,7 @@ public class GududanEx {
  
 		// 메소드 실행 하려면 새로운 클래스이름();
 //		Student.callStatic();
-	Student.callStatic();
+	Students.callStatic();
 		for (int q = 2; q <= 9; q++) {
 			for (int w = 1; w <= 9; w++) {
 				System.out.print(q + "*" + w + "=" + (q * w) + "\t");

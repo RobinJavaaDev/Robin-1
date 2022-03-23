@@ -2,13 +2,11 @@ package com.dev;
 
 import java.util.Scanner;
 
-import com.edu.Student;
-
 public class StudentEx {
 	public static void main(String[] args) {
 		// Scanner, 배열선언 5개, 입력, 리스트출력.
 		Scanner scn = new Scanner(System.in);
-		Student[] students = new Student[5];
+		Students[] students = new Students[5];
 
 		while (true) {
 			System.out.println("1.입력 2.리스트 3.종료");
@@ -27,7 +25,7 @@ public class StudentEx {
 				System.out.print("수학점수를 입력하세요>");
 				int mscore = scn.nextInt();
 
-				Student s1 = new Student(sname, sno, kscore, mscore, escore);
+				Students s1 = new Students(sname, sno, kscore, mscore, escore);
 				for (int i = 0; i < students.length; i++) {
 					if (students[i] == null) {
 						students[i] = s1;
@@ -39,7 +37,7 @@ public class StudentEx {
 				// 리스트
 				for (int i = 0; i < students.length; i++) {
 					if (students[i] != null) {
-						System.out.println(students[i].getStudInfo());
+						System.out.println(students[i].getStudentInfo());
 					}
 
 				}

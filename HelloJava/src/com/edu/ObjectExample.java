@@ -1,4 +1,7 @@
 package com.edu;
+
+import com.dev.Students;
+
 // 절차프로그램(데이터,함수) -> 객체(데이터, [필드,메소드], 기능(함수),)지향
 // Object(객체) -> Class(도면, 틀) -> 인스턴스 생성(초기화).
 // 학생(객체:Object) -> Class Student -> instance(new student())
@@ -14,7 +17,7 @@ public class ObjectExample {
 		car1.setModel("Sonata");
 		car1.setPrice(10000000);
 
-		Student s1 = new Student(); // 초기화 시점에 값을 지정하려함.
+		Students s1 = new Students(); // 초기화 시점에 값을 지정하려함.
 		s1.setStudNo(100);
 		s1.setStudName("김형민");
 		s1.setKorScore(90);

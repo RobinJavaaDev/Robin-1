@@ -1,6 +1,6 @@
-package com.edu;
+package com.dev;
 
-public class Student {
+public class Students {
    //학생번호, 학생이름, 국어점수, 수학점수, 영어점수 <=필드로 정의
 	
 	private int studNo; 
@@ -10,17 +10,17 @@ public class Student {
     private int engScore = -1;
     
     //생성자: 필드의 값을 초기화
-    public Student() {
+    public Students() {
        this.studNo = 1;
        this.studName = "nobody";
        this.korScore = 0;
        this.engScore = 0;
     }
     
-    public Student(int studNo) {
+    public Students(int studNo) {
        this.studNo = studNo;
     }
-    public Student( int studNo, String studName,int korScore, int mathScore, int engScore) {
+    public Students( int studNo, String studName,int korScore, int mathScore, int engScore) {
      
       this.studNo = studNo;
       this.studName = studName;
@@ -29,13 +29,17 @@ public class Student {
       this.engScore = engScore;
    }
 
-   public Student(int studNo, String studName) {
+   public Students(int studNo, String studName) {
        this.studNo = studNo;
        this.studName = studName;
        
     }
     
-    //영어, 국어, 수학 ==> 값이 저장되면 평균값을 구해보자.   
+    public Students(String string, int i, int j, int k, int l) {
+	// TODO Auto-generated constructor stub
+}
+
+	//영어, 국어, 수학 ==> 값이 저장되면 평균값을 구해보자.   
     public double getAvgScore() {
        return getSumScore() / 3.0;
     }
@@ -90,5 +94,10 @@ public class Student {
       str += "\n===============================\n";
       return str;
    }
+
+public static void callStatic() {
+	// TODO Auto-generated method stub
+	
+}
    
 }
