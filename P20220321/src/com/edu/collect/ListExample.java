@@ -32,7 +32,7 @@ public class ListExample {
 //		for (int i = 0; i < numAry.size(); i++) {
 //			int result = numAry.get(i);
 //		}
-		
+		System.out.println("end of prog");
 		
 	}
 }

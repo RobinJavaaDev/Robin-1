@@ -12,8 +12,14 @@ public class Student {
 	private int EngScore;
 	private int KorScore;
 
-	public Student(int i, String string, int j, int k) {
-		
+	
+
+	public Student(int studentNum, String studentName, int engScore, int korScore) {
+		super();
+		StudentNum = studentNum;
+		StudentName = studentName;
+		EngScore = engScore;
+		KorScore = korScore;
 	}
 
 	public int getStudentNum() {
