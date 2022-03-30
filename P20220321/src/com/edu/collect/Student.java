@@ -1,6 +1,8 @@
 package com.edu.collect;
 
-public class Student {
+import java.io.Serializable;
+
+public class Student implements Serializable{
 	// 학생번호(1,2,3), 이름(홍길동), 영어(80), 국어(70).
 
 	// 생성자: 기본 생성자, 매개값이 4개인 생성자.
@@ -21,6 +23,10 @@ public class Student {
 		EngScore = engScore;
 		KorScore = korScore;
 	}
+public Student(){
+	
+}
+	
 
 	public int getStudentNum() {
 		return StudentNum;

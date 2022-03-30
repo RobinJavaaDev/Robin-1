@@ -34,14 +34,14 @@ public class EmpDAO extends DAO {
 		}
 		return employees;
 	}
+
 	// 한건 조회
-   public Employee searchEmp(int eid) {
-	   
-	   conn = getConnect();
-	   Employee emp = null;
+	public Employee searchEmp(int eid) {
+
+		conn = getConnect();
+		Employee emp = null;
 		try {
-			psmt = conn.prepareStatement("SELECT * FROM emp_java "
-					+ "WHERE employee_id = ? ");
+			psmt = conn.prepareStatement("SELECT * FROM emp_java " + "WHERE employee_id = ? ");
 			psmt.setInt(1, eid);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
@@ -54,7 +54,6 @@ public class EmpDAO extends DAO {
 				emp.setHireDate(rs.getString("hire_date").substring(0, 10));
 				emp.setJobId(rs.getString("job_id"));
 
-				
 			}
 		} catch (SQLException e) {
 
@@ -63,14 +62,13 @@ public class EmpDAO extends DAO {
 			disconnect();
 		}
 		return emp;
-   }
-	
-	
+	}
+
 	// 입력처리 executeUpdate
-	public void insertEmp(Employee emp) {
+	public boolean insertEmp(Employee emp) {
 		conn = getConnect();
 		String sql = "insert into emp_java (employee_id, last_name, email, hire_date, job_id) "
-			+	"values (?, ?, ?, ?, ?)";
+				+ "values (?, ?, ?, ?, ?)";
 		/// 넣어야함...adsadasdsadasda
 		try {
 			psmt = conn.prepareStatement(sql); // <= 매개변수값중에서 employeeId 필요
@@ -81,18 +79,19 @@ public class EmpDAO extends DAO {
 			psmt.setString(5, emp.getJobId());
 			int r = psmt.executeUpdate();
 			System.out.println(r + " 건 입력완료");
-
+			if (r > 0) {
+				return true;
+			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		} finally {
-			//
 			disconnect();
 		}
+		return false;
 	}
 
 	// 수정처리
-	public void updateEmp(Employee emp) {
+	public boolean updateEmp(Employee emp) {
 		conn = getConnect();
 		String sql = "update emp_java  " + "set first_name = ?, " + "phone_number =?, " + "salary=? "
 				+ "where employee_id = ?"; // 쿼리 작성 -> ? 작성,
@@ -106,17 +105,19 @@ public class EmpDAO extends DAO {
 
 			int r = psmt.executeUpdate(); // 실행
 			System.out.println(r + "건 수정완료.");
-
+			if (r > 0) {
+				return true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-
+		return false;
 	}
 
 	// 삭제처리
-	public void deleteEmp(int empId) {
+	public boolean deleteEmp(int empId) {
 		conn = getConnect();
 		String sql = "delete from emp_java " + "where employee_id = ?"; // 쿼리 작성 -> ? 작성,
 		try {
@@ -126,10 +127,14 @@ public class EmpDAO extends DAO {
 			psmt.setInt(1, empId);
 			int r = psmt.executeUpdate(); // 실행
 			System.out.println(r + "건 삭제완료.");
+			if (r > 0) {
+				return true;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
+		return false;
 	}
 }

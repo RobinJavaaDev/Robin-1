@@ -84,8 +84,9 @@ public class StudentApp {
 	
 	// 메인기능 담당하는 execute()
 	public void execute() {
-		StudentService service = new StudentServiceImpl();
-                       service = new StudentServiceFile();
+		StudentService service = new StudentServiceOracle();
+		               //service = new StudentServiceImpl();
+                       //service = new StudentServiceFile();
                        //service = new StudentServiceOracle();
 		// 메뉴: 1.추가 2.리스트 3.한건조회(학생번호) 4.수정 5.삭제 6.이름조회(이름) 9.종료
 		while (true) {

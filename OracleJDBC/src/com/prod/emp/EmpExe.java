@@ -35,7 +35,11 @@ public class EmpExe {
 				System.out.println("직종ID입력");
 				emp.setJobId(scn.next());
 				dao.insertEmp(emp);
-
+				boolean tOrF = dao.insertEmp(emp); // boolean타입으로 결과 값을 받아와서..
+				if (tOrF) {
+					System.out.println("정상처리");
+				} else
+					System.out.println("오류");
 			} else if (menu == 3) { // 수정
 				Employee emp = new Employee();
 
@@ -48,12 +52,24 @@ public class EmpExe {
 				System.out.println("수정할 사원번호입력");
 				emp.setEmployeeId(scn.nextInt());
 
-				dao.updateEmp(emp);
-
+				boolean result = dao.updateEmp(emp);
+				if (result) {
+					System.out.println("정상처리");
+				} else {
+					System.out.println("오류");
+				}
 			} else if (menu == 4) { // 삭제
 				Employee emp = new Employee();
 				System.out.println("수정할 사원번호입력");
-				dao.deleteEmp(scn.nextInt());
+				int s = scn.nextInt();
+
+				boolean result = dao.deleteEmp(s);
+				;
+				if (result) {
+					System.out.println("정상처리");
+				} else {
+					System.out.println("오류");
+				}
 			} else if (menu == 5) { // 한건조회
 
 				System.out.println("사원번호입력");
