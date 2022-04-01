@@ -132,4 +132,10 @@ public class BoardServiceOracle extends DAO implements BoardService {
 
 	}
 
+	@Override
+	public boolean loginBoard() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

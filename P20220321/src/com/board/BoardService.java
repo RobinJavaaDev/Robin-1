@@ -14,4 +14,6 @@ public interface BoardService {
 	public void removeBoard(int bno); // 게시글 제거
 
 	public List<Board> searchBoard(String user); // 유저로 조회
+	
+	public boolean loginBoard ( );
 }

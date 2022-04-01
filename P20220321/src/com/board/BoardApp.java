@@ -65,6 +65,12 @@ public class BoardApp {
 			return searchList;
 		}
 
+		@Override
+		public boolean loginBoard() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
 	} // end of BoardServiceImpl
 
 	BoardService service = new BoardServiceImpl();
