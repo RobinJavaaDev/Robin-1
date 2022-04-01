@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 public class BoardApp {
 	List<Board> list = new ArrayList<Board>();
 	Scanner scn = new Scanner(System.in);
@@ -13,8 +11,8 @@ public class BoardApp {
 	class BoardServiceImpl implements BoardService {
 
 		@Override
-		public boolean insertBoard(Board board) {
-			return list.add(board);
+		public void insertBoard(Board board) {
+			list.add(board);
 		}
 
 		@Override
@@ -69,8 +67,6 @@ public class BoardApp {
 
 	} // end of BoardServiceImpl
 
-	
-		BoardService service = new BoardServiceImpl();
-		
-	
+	BoardService service = new BoardServiceImpl();
+
 }

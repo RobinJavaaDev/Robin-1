@@ -8,10 +8,10 @@ public class BoardServiceOracle extends DAO implements BoardService {
 
 	@Override
 	// 입력
-	public boolean insertBoard(Board board) {
+	public void insertBoard(Board board) {
 		conn = getConnect();
 		String sql = " INSERT INTO board_info (board_num, board_title, board_contents, board_user, board_date) "
-				+ "VALUES (?, ?, ?, ?, ?);";
+				+ "VALUES (?, ?, ?, ?, ?)";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, board.getBoardNum());
@@ -21,35 +21,68 @@ public class BoardServiceOracle extends DAO implements BoardService {
 			psmt.setString(5, board.getBoardDate());
 			int r = psmt.executeUpdate();
 			System.out.println(r + " 건 입력완료");
-			if (r > 0) {
-				return true;
-			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
-		return false;
 
 	}
 
 	@Override
 	public Board getBoard(int bno) {
 		conn = getConnect();
+		Board brd = null;
 		try {
-			psmt = conn.prepareStatement("SELECT * FROM board_info " + "where board_user like '?';");
+			psmt = conn.prepareStatement("SELECT * FROM board_info " + "where board_num = ? ");
+			psmt.setInt(1, bno);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				brd = new Board();
+				brd.setBoardNum(rs.getInt("board_num"));
+				brd.setBoardTitle(rs.getString("board_title"));
+				brd.setBoardContents(rs.getString("board_contents"));
+				brd.setBoardUser(rs.getString("board_user"));
+				brd.setBoardDate(rs.getString("board_date"));
+
+			}
 		} catch (SQLException e) {
 
 			e.printStackTrace();
+		} finally {
+			disconnect();
 		}
 
-		return null;
+		return brd;
 	}
 
 	@Override
+	// 리스트
 	public List<Board> boardList() {
 
-		return null;
+		List<Board> boards = new ArrayList<Board>();
+		conn = getConnect();
+		try {
+			psmt = conn.prepareStatement("select * from board_info");
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				Board brd = new Board();
+				brd.setBoardNum(rs.getInt("board_num"));
+				brd.setBoardTitle(rs.getString("board_title"));
+				brd.setBoardContents(rs.getString("board_contents"));
+				brd.setBoardUser(rs.getString("board_user"));
+				brd.setBoardDate(rs.getString("board_date")); // .substring(0, 10)
+				boards.add(brd);
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+
+		return boards;
 	}
 
 	@Override
@@ -76,20 +109,27 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	@Override
 	// 제거
 	public void removeBoard(int bno) {
+		conn = getConnect();
+		String sql = "delete from board_info \" + \"where board_num = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setInt(1, bno);
+			int r = psmt.executeUpdate(); // 실행
+			System.out.println(r + "건 삭제완료.");
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
 
 	}
 
 	@Override
-	// 리스트조회
+	// 한건조회
 	public List<Board> searchBoard(String user) {
-		List<Board> boards = new ArrayList<Board>();
-		
-		
-		
-		
-		
-		
 		return null;
+
 	}
 
 }

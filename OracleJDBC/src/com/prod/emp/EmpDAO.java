@@ -9,7 +9,6 @@ public class EmpDAO extends DAO {
 	// 전체조회
 	public List<Employee> empList() {
 		List<Employee> employees = new ArrayList<Employee>();
-
 		conn = getConnect();
 		try {
 			psmt = conn.prepareStatement("select * from emp_java");

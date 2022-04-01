@@ -18,7 +18,7 @@ public class Board implements Serializable{
 	
 	
 	
-	public Board(String boardTitle, String boardContents, String boardUser, String boardDate, int boardNum) {
+	public Board( int boardNum, String boardTitle, String boardContents, String boardUser, String boardDate) {
 		super();
 		BoardTitle = boardTitle;
 		BoardContents = boardContents;

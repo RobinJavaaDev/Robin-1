@@ -3,7 +3,7 @@ package com.board;
 import java.util.List;
 
 public interface BoardService {
-	public boolean insertBoard(Board board); // 게시글 입력
+	public void insertBoard(Board board); // 게시글 입력
 
 	public Board getBoard(int bno); // 한건조회
 
