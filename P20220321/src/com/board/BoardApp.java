@@ -8,7 +8,7 @@ public class BoardApp {
 	List<Board> list = new ArrayList<Board>();
 	Scanner scn = new Scanner(System.in);
 
-	class BoardServiceImpl implements BoardService {
+	abstract class BoardServiceImpl implements BoardService {
 
 		@Override
 		public void insertBoard(Board board) {
@@ -65,14 +65,13 @@ public class BoardApp {
 			return searchList;
 		}
 
-		@Override
-		public boolean loginBoard() {
-			// TODO Auto-generated method stub
-			return false;
-		}
+
+
+
+		
 
 	} // end of BoardServiceImpl
 
-	BoardService service = new BoardServiceImpl();
+	
 
 }

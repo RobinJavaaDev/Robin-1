@@ -8,8 +8,32 @@ public class BoardExe {
 		//BoardApp app = new BoardApp();
 		Scanner scn = new Scanner(System.in);
 		BoardServiceOracle BSO = new BoardServiceOracle();
-		System.out.println("1.로그인 2.회원가입(미구현)");
-		System.out.print("선택>>>>");
+		
+		
+		
+		while(true) {
+			System.out.println("1.로그인 2.회원가입(미구현)");
+			System.out.print("선택>>>>");
+			int menu = scn.nextInt();
+			if(menu ==1) {
+				System.out.println("아이디 입력>>");
+				String um1 = scn.next();
+				System.out.println("비밀번호 입력>>");
+			int um2 = scn.nextInt();
+				boolean tOrF = BSO.loginBoard(um2,um1);
+				if (tOrF) {
+					System.out.println("정상처리");
+				} else
+					System.out.println("오류");
+				  break;
+			} else if(menu == 2) {
+				
+			}
+			
+			
+			break;
+		}
+		
 		
 		
 		

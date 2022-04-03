@@ -133,8 +133,29 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	}
 
 	@Override
-	public boolean loginBoard() {
-		// TODO Auto-generated method stub
+	// 로그인
+	public boolean loginBoard(int bno1, String bno2) {
+		conn = getConnect();
+		String brd = "SELECT user_id, user_pwd  " + "FROM user_info " + "WHERE  user_pwd=? " + "AND user_id like ?";
+
+		try {
+			psmt = conn.prepareStatement(brd);
+			psmt.setInt(1, bno1);
+			psmt.setString(2, bno2);
+           
+			boolean r = psmt.execute();
+			if (r == true) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+
 		return false;
 	}
 

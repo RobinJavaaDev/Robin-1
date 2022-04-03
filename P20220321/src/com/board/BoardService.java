@@ -15,5 +15,8 @@ public interface BoardService {
 
 	public List<Board> searchBoard(String user); // 유저로 조회
 	
-	public boolean loginBoard ( );
+	public boolean loginBoard(int bno1, String bno2); // 로그인
+
+	
+	
 }
