@@ -136,15 +136,16 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	// 로그인
 	public boolean loginBoard(int bno1, String bno2) {
 		conn = getConnect();
-		String brd = "SELECT user_id, user_pwd  " + "FROM user_info " + "WHERE  user_pwd=? " + "AND user_id like ?";
+		String brd = "SELECT user_id, user_pwd  " + "FROM user_info " + "WHERE  user_pwd=? AND user_id = ?";
 
 		try {
 			psmt = conn.prepareStatement(brd);
 			psmt.setInt(1, bno1);
 			psmt.setString(2, bno2);
            
-			boolean r = psmt.execute();
-			if (r == true) {
+			//psmt.execute();
+			int r = psmt.executeUpdate();
+			if (r > 0) {
 				return true;
 			} else {
 				return false;
