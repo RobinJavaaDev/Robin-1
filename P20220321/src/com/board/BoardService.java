@@ -17,6 +17,6 @@ public interface BoardService {
 	
 	public boolean loginBoard(int bno1, String bno2); // 로그인
 
-	
+	public boolean loginCheckBoard (int bnum1, String bnum2);
 	
 }

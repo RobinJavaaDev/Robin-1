@@ -10,7 +10,10 @@ public class BoardExe {
 		BoardServiceOracle BSO = new BoardServiceOracle();
 
 		while (true) {
-			System.out.println("1.로그인 2.회원가입(미구현)");
+			System.out.println("=============================================\r\n" + "1.로그인 2.회원가입(미구현)"
+					+ "\r\n=============================================\r\n"
+
+			);
 			System.out.print("선택>>>>");
 			int menu = scn.nextInt();
 			if (menu == 1) {
@@ -25,33 +28,43 @@ public class BoardExe {
 					System.out.println("오류");
 					continue;
 				}
-			} 
-			else if (menu == 2) {
-				System.out.println("미구현기능");
-				continue;
-		}
+			} else if (menu == 2) {
+				System.out.println("새로 만들 아이디 입력>>");
+				String um1 = scn.next();
+				System.out.println("새로 만들 비밀번호 입력>>");
+				int um2 = scn.nextInt();
+				boolean tOrF = BSO.loginCheckBoard(um2, um1);
+				if (tOrF == true) {
+					System.out.println("회원가입 완료");
+					continue;
+				} else {
+					System.out.println("중복된 계정입니다");
+					continue;
+				}
+
+			}
 			while (true) {
-				System.out.println("1.게시글 목록 2.게시글 등록 3.게시글 한건조회 4.게시글 수정 5.게시글 삭제   ~~   9.종료");
+				System.out.println("============================================================================\r\n"
+						+ "1.게시글 목록 2.게시글 등록 3.게시글 한건조회 4.게시글 수정 5.게시글 삭제   ~~   9.종료"
+						+ "\r\n============================================================================\r\n");
 				System.out.print("선택>>>>");
 				int menu2 = scn.nextInt();
 				if (menu2 == 1) {
 					List<Board> list = BSO.boardList();
-					System.out.println("====유저리스트====");
+					System.out
+							.println("===============================================================================");
 					for (Board brd : list) {
+
 						System.out.println(brd.toString());
 					}
+					System.out
+							.println("===============================================================================");
 				} else if (menu2 == 2) {
 					Board bd = new Board();
-					System.out.println("게시글 번호 입력");
-					bd.setBoardNum(scn.nextInt());
 					System.out.println("게시글 제목 입력");
 					bd.setBoardTitle(scn.next());
 					System.out.println("게시글 내용 입력");
 					bd.setBoardContents(scn.next());
-					System.out.println("게시글 사용자 입력");
-					bd.setBoardUser(scn.next());
-					System.out.println("게시글 작성일자 입력");
-					bd.setBoardDate(scn.next());
 
 					BSO.insertBoard(bd);
 
@@ -61,19 +74,29 @@ public class BoardExe {
 					Board board = BSO.getBoard(bNo);
 					if (board == null) {
 						System.out.println("조회결과없음");
+						continue;
 					} else {
 						System.out.println(board.toString());
 					}
+					// System.out.println(\r\n(임시이름)ansboard.toString());\
+					System.out.println("\r\n ㄴ> 댓글위치테슽트 \r\n");
+					System.out.println("1.댓글 달기 2.메뉴화면가기");
+					int ansmenu = scn.nextInt();
+					if (ansmenu == 1) {
+                      System.out.println("미완");
+					} else if (ansmenu == 2) {
+						continue;
+					}
 
 				} else if (menu2 == 4) {
+					System.out.println("수정할 게시글 번호 입력");
+					int num = scn.nextInt();
 					System.out.println("수정할 게시글 제목 입력");
 					String title = scn.next();
 					System.out.println("수정할 게시글 내용 입력");
 					String contents = scn.next();
-					System.out.println("수정할 게시글 번호 입력");
-					int num = scn.nextInt();
 
-					Board b1 = new Board(num, title, contents, null, null);
+					Board b1 = new Board(num, title, contents, null);
 					BSO.modifyBoard(b1);
 					System.out.println("게시글 수정 완료");
 				} else if (menu2 == 5) {
@@ -85,7 +108,7 @@ public class BoardExe {
 					break;
 
 				}
-				
+
 			}
 			System.out.println("end of prog");
 			break;

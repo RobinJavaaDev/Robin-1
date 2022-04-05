@@ -10,15 +10,15 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	// 입력
 	public void insertBoard(Board board) {
 		conn = getConnect();
-		String sql = " INSERT INTO board_info (board_num, board_title, board_contents, board_user, board_date) "
-				+ "VALUES (?, ?, ?, ?, ?)";
+		String sql = " INSERT INTO board_info(board_num, board_title, board_contents, board_date) "
+				+ " VALUES((SELECT MAX (board_num +1) from board_info), ?,?, default) ";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setInt(1, board.getBoardNum());
-			psmt.setString(2, board.getBoardTitle());
-			psmt.setString(3, board.getBoardContents());
-			psmt.setString(4, board.getBoardUser());
-			psmt.setString(5, board.getBoardDate());
+			
+			psmt.setString(1, board.getBoardTitle());
+			psmt.setString(2, board.getBoardContents());
+			
+		
 			int r = psmt.executeUpdate();
 			System.out.println(r + " 건 입력완료");
 
@@ -43,7 +43,6 @@ public class BoardServiceOracle extends DAO implements BoardService {
 				brd.setBoardNum(rs.getInt("board_num"));
 				brd.setBoardTitle(rs.getString("board_title"));
 				brd.setBoardContents(rs.getString("board_contents"));
-				brd.setBoardUser(rs.getString("board_user"));
 				brd.setBoardDate(rs.getString("board_date"));
 
 			}
@@ -71,7 +70,6 @@ public class BoardServiceOracle extends DAO implements BoardService {
 				brd.setBoardNum(rs.getInt("board_num"));
 				brd.setBoardTitle(rs.getString("board_title"));
 				brd.setBoardContents(rs.getString("board_contents"));
-				brd.setBoardUser(rs.getString("board_user"));
 				brd.setBoardDate(rs.getString("board_date")); // .substring(0, 10)
 				boards.add(brd);
 			}
@@ -110,7 +108,7 @@ public class BoardServiceOracle extends DAO implements BoardService {
 	// 제거
 	public void removeBoard(int bno) {
 		conn = getConnect();
-		String sql = "delete from board_info \" + \"where board_num = ?";
+		String sql = "delete from board_info " + "where board_num = ?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setInt(1, bno);
@@ -158,6 +156,39 @@ public class BoardServiceOracle extends DAO implements BoardService {
 		}
 
 		return false;
+	}
+
+	@Override
+	//회원가입,
+	public boolean loginCheckBoard(int bnum1, String bnum2) {
+		
+		conn = getConnect();
+		String brd = "INSERT INTO user_info(user_id, user_pwd) "
+				+ "VALUES(?, ?)";
+
+		try {
+			psmt = conn.prepareStatement(brd);
+			
+			psmt.setString(1, bnum2);
+			psmt.setInt(2, bnum1);
+			//psmt.execute();
+			int r = psmt.executeUpdate();
+			if (r > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+
+		return false;
+		
+		
+		
 	}
 
 }
