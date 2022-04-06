@@ -10,10 +10,9 @@ public class BoardExe {
 		BoardServiceOracle BSO = new BoardServiceOracle();
 
 		while (true) {
-			System.out.println("=============================================\r\n" + "1.로그인 2.회원가입(미구현)"
-					+ "\r\n=============================================\r\n"
-
-			);
+			System.out.println("============================================================================");
+			System.out.println("=                1.로그인 2.회원가입 3.회원탈퇴 4.중복확인 5.종료                   =");
+			System.out.println("============================================================================");
 			System.out.print("선택>>>>");
 			int menu = scn.nextInt();
 			if (menu == 1) {
@@ -42,23 +41,48 @@ public class BoardExe {
 					continue;
 				}
 
+			} else if (menu == 3) {
+				System.out.println("탈퇴할 아이디 입력>>");
+				String um1 = scn.next();
+				System.out.println("탈퇴할 비밀번호 입력>>");
+				int um2 = scn.nextInt();
+				boolean tOrF = BSO.removeUser(um2, um1);
+				if (tOrF == true) {
+					System.out.println("탈퇴 완료");
+					continue;
+				} else {
+					System.out.println("잘못된 입력입니다");
+					continue;
+				}
+			} else if (menu == 4) {
+				System.out.println("확인할 아이디 입력>>>");
+				String um = scn.next();
+				boolean tOrF = BSO.userCheck(um);
+				if (tOrF == true) {
+					System.out.println("중복된 아이디 입니다");
+					continue;
+				} else {
+					System.out.println("사용 가능한 아이디입니다");
+					continue;
+				}
+			} else if (menu == 5) {
+				System.out.println("프로그램 종료");
+				break;
 			}
+
 			while (true) {
-				System.out.println("============================================================================\r\n"
-						+ "1.게시글 목록 2.게시글 등록 3.게시글 한건조회 4.게시글 수정 5.게시글 삭제   ~~   9.종료"
-						+ "\r\n============================================================================\r\n");
+				System.out.println("============================================================================");
+				System.out.println("= 1.게시글 목록 2.게시글 등록 3.게시글 한건조회 4.게시글 수정 5.게시글 삭제   ~~  9.종료 =");
+				System.out.println("============================================================================");
+
 				System.out.print("선택>>>>");
 				int menu2 = scn.nextInt();
 				if (menu2 == 1) {
 					List<Board> list = BSO.boardList();
-					System.out
-							.println("===============================================================================");
 					for (Board brd : list) {
-
 						System.out.println(brd.toString());
 					}
-					System.out
-							.println("===============================================================================");
+
 				} else if (menu2 == 2) {
 					Board bd = new Board();
 					System.out.println("게시글 제목 입력");
@@ -79,13 +103,13 @@ public class BoardExe {
 						System.out.println(board.toString());
 					}
 					// System.out.println(\r\n(임시이름)ansboard.toString());\
-					System.out.println("\r\n ㄴ> 댓글위치테슽트 \r\n");
+					System.out.println("          ㄴ> 댓글위치테슽트 ");
 					System.out.println("1.댓글 달기 2.메뉴화면가기");
 					int ansmenu = scn.nextInt();
 					if (ansmenu == 1) {
-                      System.out.println("미완");
+						System.out.println("미완");
 					} else if (ansmenu == 2) {
-						continue;
+
 					}
 
 				} else if (menu2 == 4) {

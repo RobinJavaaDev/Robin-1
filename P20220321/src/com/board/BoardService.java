@@ -17,6 +17,9 @@ public interface BoardService {
 	
 	public boolean loginBoard(int bno1, String bno2); // 로그인
 
-	public boolean loginCheckBoard (int bnum1, String bnum2);
+	public boolean loginCheckBoard (int bnum1, String bnum2); // 회원가입
 	
+	public boolean removeUser(int uno1, String uno2);
+	
+	public boolean userCheck (String usercheck);
 }

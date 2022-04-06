@@ -191,4 +191,53 @@ public class BoardServiceOracle extends DAO implements BoardService {
 		
 	}
 
+	@Override
+	//회원탈퇴
+	public boolean removeUser(int uno, String uno2) {
+		conn = getConnect();
+		String sql = "delete from user_info "
+				+ "where user_id = ? and user_pwd = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, uno2);
+			psmt.setInt(2, uno);
+			int r = psmt.executeUpdate(); // 실행
+			System.out.println(r + "건 회원탈퇴 완료.");
+			if (r > 0) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		} finally {
+			disconnect();
+		}
+		return false;
+	}
+
+	@Override
+	//회원중복확인
+	public boolean userCheck(String usercheck) {
+		conn = getConnect();
+		String sql = "SELECT * FROM user_info WHERE user_id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, usercheck);
+			int r = psmt.executeUpdate();
+			if (r > 0) {
+				
+				return true;
+			} else {
+				return false;
+			}
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return false;
+	}
+
 }
