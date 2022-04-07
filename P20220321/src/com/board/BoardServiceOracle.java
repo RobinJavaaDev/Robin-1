@@ -35,7 +35,7 @@ public class BoardServiceOracle extends DAO implements BoardService {
 		conn = getConnect();
 		Board brd = null;
 		try {
-			psmt = conn.prepareStatement("SELECT * FROM board_info " + "where board_num = ? ");
+			psmt = conn.prepareStatement("SELECT * FROM board_info " + "where board_num = ? " + "ORDER BY board_num DESC");
 			psmt.setInt(1, bno);
 			rs = psmt.executeQuery();
 			while (rs.next()) {

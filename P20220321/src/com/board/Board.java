@@ -25,8 +25,9 @@ public class Board implements Serializable {
 	@Override
 	public String toString() {
 		      
-		return "게시글조회: [게시글제목= " + BoardTitle + " , 게시글내용= " + BoardContents + " , 작성일자= " + BoardDate.substring(0, 10) + " , 게시글번호= "
-				+ BoardNum + "]";
+		return "게시글조회: \r\n[게시글제목= " + BoardTitle +  "] "
+				+ " [게시글번호 = " + BoardNum + "] "
+				+ " \r\n[게시글내용= " + BoardContents + "]  \r\n[작성일자= " + BoardDate.substring(0, 10) +"]" ;
 	}
 
 	public int getBoardNum() {
