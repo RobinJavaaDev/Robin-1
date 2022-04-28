@@ -1,4 +1,4 @@
-package co.ed.student;
+package co.edu.student;
 
 public class Student {
  private int studentNo;

@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.ed.student.Student;
-import co.ed.student.StudentDAO;
+import co.edu.student.Student;
+import co.edu.student.StudentDAO;
 
 @WebServlet("/studentList.json")
 public class StudentListServ extends HttpServlet{

@@ -1,4 +1,4 @@
-package co.ed.student;
+package co.edu.student;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
