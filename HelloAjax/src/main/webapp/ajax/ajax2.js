@@ -12,14 +12,20 @@
  	}
  });
  
- promise.then((result1, reject1) => {
-          val-= 2;
-          if(val>0){
-          result1('success, ' + val)          
-          } else {
-          reject1('error');
-          }
- 		})
+ promise.then(resolve => {
+ 		  return new Promise((resolve, reject)=>{
+ 		   val-=2;
+ 		   if(val>0){
+ 		    resolve('success, ' + val);
+ 		   }else{
+ 		    reject('error');
+ 		   }
+ 		  
+ 		  });
+ 
+ 
+       })
+        .then()
         .catch();
  
  
