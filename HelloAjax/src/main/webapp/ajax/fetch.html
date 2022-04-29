@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ajax/fetch.html</title>
+<script src=ajax2.js></script>
+</head>
+<body>
+	<button>선택삭제</button>
+	<table border='1'>
+		<tr>
+		  <td><input type='checkbox'></td>
+		  <td>Hongkilldong1</td>
+		</tr>
+		<tr>
+		  <td><input type='checkbox'></td>
+		  <td>Hongkilldong2</td>
+		</tr>
+		<tr>
+		  <td><input type='checkbox'></td>
+		  <td>Hongkilldong3</td>
+		</tr>
+	</table>
+	<script>
+	//ajax->XMLHttpRequest => fetch
+	let xhtp = new XMLHttpRequest();
+	xhtp.open('get','../studentList.json')
+	xhtp.send();
+	xhtp.onload = function(){
+	console.log('xmlhttpprequest');
+	console.log(xhtp.responseText);
+	
+	let xhtp2 = new XMLHttpRequest();
+	
+	}
+	
+	 fetch('../studentList.json')
+	 .then(function(result){
+	 	let val = result.json();
+	 	return val;
+	 }).then (function(result){
+	 	console.log(result);
+	 
+	 }) 
+	 .catch(function(error){
+	   console.log(error);
+	 })
+	
+	
+	</script>
+</body>
+</html>
