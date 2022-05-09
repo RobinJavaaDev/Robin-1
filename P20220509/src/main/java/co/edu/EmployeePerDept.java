@@ -47,7 +47,7 @@ public class EmployeePerDept extends HttpServlet {
 		
 		String sql ="select e.department_id, d.department_name, count(1) as cnt from employees e, departments d \r\n"
 				+ "where e.department_id = d.department_id\r\n"
-				+ "group by e.department_id, d.department_name;";
+				+ "group by e.department_id, d.department_name";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
