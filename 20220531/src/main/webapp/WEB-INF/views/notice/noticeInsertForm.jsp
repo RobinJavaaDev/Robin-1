@@ -40,7 +40,7 @@
 				<tr>
 					<th width="200">첨부파일</th>
 					<td colspan="3">
-						<input type="file" id="file" name="file">
+						<input type="file" id="file" name="file" multiple = "multiple">
 					</td>	
 				</tr>
 			</table>

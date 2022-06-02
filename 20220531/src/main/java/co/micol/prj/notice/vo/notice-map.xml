@@ -46,7 +46,7 @@
 	 	 <if test="noticeAttech != null">notice_attech = #{noticeAttech},</if>
 	 	 <if test="noticeDir != null">notice_dir = #{noticeDir},</if>
  	 </set>
- 	 WHERE NOTICE_ID = #{noticeID}
+ 	 WHERE NOTICE_ID = #{noticeId}
  </update>
  
  <delete id="noticeDelete" parameterType="co.micol.prj.notice.vo.NoticeVO">
