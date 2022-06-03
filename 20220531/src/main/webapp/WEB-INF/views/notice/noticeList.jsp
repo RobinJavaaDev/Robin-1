@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="resources/jquery-3.6.0.min.js"></script>
 </head>
 <style>
 table tr:hover{
@@ -42,7 +43,7 @@ background:grey;
 			<tbody>
 				<c:if test="${not empty notices}">
 					<c:forEach items="${notices }" var="n">
-						<tr>
+						<tr onclick="eventList(${n.noticeId})">
 							<td>${n.noticeId}</td>
 							<td>${n.noticeName}</td>
 							<td>${n.noticeTitle}</td>
@@ -68,47 +69,46 @@ background:grey;
 	</div>
 </div>
 </body>
-<!-- 그룹이벤트 생성(상세조회) -->
-<script>
-	let list = document.querySelector('tbody');
-	list.addEventListener('click',function(ev){
-		if(ev.target.tagName ==='TD'){
-		//console.log(ev.target.parentNode.children[0].textContent);
-		//location.href ='getContent.do?noticeId='+ev.target.parentNode.children[0].textContent;
-		frm2.noticeId.value = ev.target.parentNode.children[0].textContent;
-		frm2.action="getContent.do";
-		frm2.submit();
-		}	
-	})
-</script>
 <script type="text/javascript">
-	function searchList(){
-		let list = document.querySelector('tbody');
-		let tb = "<tr/>";
-		
-		fetch('ajaxSearchList.do',{
-			method: 'POST',
-			body: new FormData(document.getElementById('frm'))
-		})
-		.then(response => response.json())
-		.then(data => {
-			list.remove();
-			data.forEach(n=>{
-			let td = "<tr><td>",
-			td+= n.noticeId + "</td>",
-			td.append(n.noticeId)
-			td.append(n.noticeName)
-			td.append(n.noticeTitle)
-			td.append(n.noticeDate)
-			td.append(n.noticeHit)
-			td.append(n.noticeAttech);
-			td.append(t);
-			})
-			list.add(t);
-			list.disabled=true;
-		})
-	}
+function eventList(data){
+		   frm2.noticeId.value = data;
+		   frm2.action="getContent.do";
+		   frm2.submit();
+
+}
+
+function searchList(){
+	let state = $("#state").val(); //documentElementById("state").value;
+	let key = $("#key").val();
 	
-	
+	$.ajax({
+		url: "ajaxSearchList.do",
+		type: "post",
+		data:{"state" : state, "key" : key},
+		dataType : "json",
+		success: function(data){
+			htmlConvert(data);
+		},
+		error: function(){
+			alert("의도치 않은 오류 발생")
+		}
+	});
+}
+function htmlConvert(data){
+	$("tbody").remove();
+	let tbody = $("<tbody/>");
+	$.each(data,function(index,n){
+		var row = $("<tr onclick='eventList("+n.noticeId+")''/>").append(
+				$("<td/>").text(n.noticeId),
+				$("<td/>").text(n.noticeName),
+				$("<td/>").text(n.noticeTitle),
+				$("<td/>").text(n.noticeDate),
+				$("<td/>").text(n.noticeHit),
+				$("<td/>").text(n.noticeAttech)
+		);
+		tbody.append(row);
+	});
+	$("#tb").append(tbody);
+}
 </script>
 </html>
