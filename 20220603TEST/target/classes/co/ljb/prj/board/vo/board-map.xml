@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="co.ljb.prj.board.service.BoardMapper">
+	<resultMap type="co.ljb.prj.board.vo.BoardVO" id="BoardMap">
+		<id property="boardId" column="board_id" />
+		<result property="boardName" column="board_name" />
+		<result property="boardTitle" column="board_title" />
+		<result property="boardContent" column="board_content" />
+		<result property="boardDate" column="board_date" />
+		<result property="boardHit" column="board_hit" />
+	</resultMap>
+
+	<select id="boardSelectList" resultMap="BoardMap">
+		SELECT * FROM BOARD
+		WHERE
+		<if test="state == 1">1 = 1</if>
+		<if test="state == 2">BOARD_NAME = #{key}</if>
+		<if test="state == 3">BOARD_TITLE LIKE '%'|| #{key} ||'%'</if>
+		<if test="state == 4">BOARD_CONTENT LIKE '%'|| #{key} ||'%'</if>
+		ORDER BY BOARD_ID DESC
+	</select>
+
+	<select id="boardSelect" resultMap="BoardMap">
+		SELECT * FROM BOARD WHERE
+		BOARD_ID = #{boardId}
+	</select>
+
+	<insert id="boardInsert"
+		parameterType="co.ljb.prj.board.vo.BoardVO">
+		<selectKey resultType="int" keyProperty="boardId"
+			order="BEFORE">
+			SELECT CASE WHEN MAX(BOARD_ID) != 0 THEN MAX(BOARD_ID) +1
+			ELSE 1 END AS ID FROM BOARD
+		</selectKey>
+		INSERT INTO BOARD
+		VALUES(#{boardId},#{boardName},#{boardTitle},#{boardContent},
+		#{boardDate},0)
+	</insert>
+
+	<update id="boardUpdate" parameterType="co.ljb.prj.board.vo.BoardVO">
+		UPDATE BOARD
+ 	 <set>
+	 	 <if test="boardName != null">board_name = #{boardName},</if>
+	 	 <if test="boardTitle != null">board_title = #{boardTitle},</if>
+	 	 <if test="boardContent != null">board_content = #{boardContent},</if>
+	 	 <if test="boardDate != null">board_date = #{boardDate},</if>
+ 	 </set>
+ 	 WHERE BOARD_ID = #{boardId}
+	</update>
+
+	<delete id="boardDelete" parameterType="co.ljb.prj.board.vo.BoardVO">
+			DELETE FROM BOARD WHERE BOARD_ID = #{boardId}
+	</delete>
+
+	<update id="boardHitUpdate" parameterType="int">
+		UPDATE BOARD
+		SET BOARD_HIT = BOARD_HIT + 1 WHERE BOARD_ID = #{id}
+	</update>
+
+</mapper>
